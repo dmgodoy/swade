@@ -12,5 +12,5 @@ La página de dicha herramienta es: http://htmlpurifier.org/. Será necesario co
 - Para la visualización de las fórmulas LaTeX mientras el usuario escribe su código se usa la herramienta MathJax. Dicha herramienta deberá instalarse en la carpeta tex_editor. La página de dicha herramienta es http://www.mathjax.org/
 
 
-
+En la carpeta test puede encontrarse una demo de funcionamiento de SWADE.
 

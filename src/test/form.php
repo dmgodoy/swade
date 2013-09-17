@@ -1,3 +1,5 @@
+<html>
+<head>
 <!--
 
     SWADE is a lightweight WYSIWYG editor developed for SWAD platform.
@@ -17,9 +19,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
-
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset='UTF-8'">
 
 </head>
