@@ -1,0 +1,16 @@
+-------------------
+INSTALACIÓN
+-------------------
+
+Para el correcto funcionamiento de SWADE en su servidor deberá instalar también las siguientes herramientas:
+
+- HTMLpurifier se usa para filtrar el código HTML generado y protegernos de la inyección de posible código malicioso. Deberá instalarse en el fichero raíz de SWADE como htmlpurifier.
+La página de dicha herramienta es: http://htmlpurifier.org/. Será necesario configurar codificación de caracteres y doctype en el fichero content_parser.php. Existe un ejemplo de uso de la función de filtrado en test/form.php.
+
+- texvc se usa para generar las imágenes de las formulas LaTeX y forma parte de la extensión math de mediawiki. Deberemos compilar dicha herramienta e incluirla en la carpeta tex_editor (o en el path). Para la generación de las imágenes de las fórmulas debemos dar permisos de escritura a las carpetas tex_editor/img y tex_editor/tmp. Podemos modificar la localización de estas carpetas en el script php tex_editor/tex2png.php. Para más información acerca de texvc consultar: http://www.mediawiki.org/wiki/Texvc
+
+- Para la visualización de las fórmulas LaTeX mientras el usuario escribe su código se usa la herramienta MathJax. Dicha herramienta deberá instalarse en la carpeta tex_editor. La página de dicha herramienta es http://www.mathjax.org/
+
+
+
+

@@ -1,0 +1,30 @@
+<?php
+
+$path_tmp = 'tmp/';
+$path_dest = 'img/';
+//$latex_formula = '"$\sqrt{a+2}$"';
+
+$latex_formula = "'".$_POST["MathInput"]."'";
+//echo $latex_formula."<br/>";
+
+$cadena = "texvc $path_tmp $path_dest $latex_formula";
+
+//echo "$cadena <br/>";
+
+exec($cadena,$output,$return);
+
+$out = $output[0];
+$name = substr($out ,1 , 32 );
+//echo "Mode: $out[0]<br/>Salida : $name<br/>Return: $return<br/>";
+//if(strcmp($out[0],'+')==0){
+//	echo "img_path: $img_path";
+	$to_replace = array('\\');
+	$escaped_latex_formula = str_replace($to_replace, '\\\\', $latex_formula);
+	$cwd = dirname($_SERVER["PHP_SELF"]);
+
+	echo "<img src=\"${cwd}/${path_dest}${name}.png\" alt=\"Formula inválida\" data-tex-swade = $escaped_latex_formula onclick=\"swade_app.tex_code_selected = $escaped_latex_formula;swade_app.selected_tex_object = this;\"/>";
+//}else{
+//	echo "Formula invalida";
+//}
+
+?>

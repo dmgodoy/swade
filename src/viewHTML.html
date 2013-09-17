@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML Source</title>
+<!--
+
+    SWADE is a lightweight WYSIWYG editor developed for SWAD platform.
+    Copyright (C) 2013 - David Medina Godoy - asce88@gmail.com
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<script>
+ if(navigator.userAgent.search('MSIE')>=0){
+ args = window.dialogArguments;
+ opener = args.opener;
+ target = args.target;
+ content = args.editor_content;
+ 
+ }else{
+ content = window.editor_content;
+ opener = window.opener;
+ target = window.target;
+ }
+
+ function saveChangesAndExit(){
+
+ target.innerHTML= document.getElementById('content').value;
+ top.close();
+
+ }
+
+
+</script>
+</head>
+<body>
+<script>document.write("<textarea id='content' rows='22' cols='50'>"+content+"</textarea>");</script>
+
+<br/>
+<div style="padding-top:15px;text-align:left;">
+<button onclick="saveChangesAndExit();">Save</button>
+</div>
+</body>
+</html>

@@ -1,4 +1,7 @@
 swade
 =====
 
-WYSIWYG editor for the platform SWAD
+Editor WYSIWYG desarrollado para la plataforma SWAD.
+
+Iconos obtenidos de http://fortawesome.github.io/Font-Awesome/
+
