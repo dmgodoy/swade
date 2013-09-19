@@ -23,18 +23,18 @@ $path_dest = 'img/';
 
 $latex_formula = "'".$_POST["MathInput"]."'";
 
-$cadena = "texvc $path_tmp $path_dest $latex_formula";
+$cadena = "./texvc $path_tmp $path_dest $latex_formula";
 
 exec($cadena,$output,$return);
 
 $out = $output[0];
 $name = substr($out ,1 , 32 );
 
-	$to_replace = array('\\');
-	$escaped_latex_formula = str_replace($to_replace, '\\\\', $latex_formula);
-	$cwd = dirname($_SERVER["PHP_SELF"]);
+$to_replace = array('\\');
+$escaped_latex_formula = str_replace($to_replace, '\\\\', $latex_formula);
+$cwd = dirname($_SERVER["PHP_SELF"]);
 
-	echo "<img src=\"${cwd}/${path_dest}${name}.png\" alt=\"Formula inválida\" data-tex-swade = $escaped_latex_formula onclick=\"swade_app.tex_code_selected = $escaped_latex_formula;swade_app.selected_tex_object = this;\"/>";
+echo "<img src=\"${cwd}/${path_dest}${name}.png\" alt=\"Formula inválida\" data-tex-swade = $escaped_latex_formula onclick=\"swade_app.tex_code_selected = $escaped_latex_formula;swade_app.selected_tex_object = this;\"/>";
 
 
 ?>
