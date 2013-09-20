@@ -23,16 +23,16 @@
 
 function parse_content(/* string */ $content){
 
-require_once 'htmlpurifier/library/HTMLPurifier.auto.php';
+    require_once 'htmlpurifier/library/HTMLPurifier.auto.php';
     
     $config = HTMLPurifier_Config::createDefault();
-    $config->set('Core', 'Encoding', 'ISO-8859-1'); // replace with your encoding
+    $config->set('Core', 'Encoding', 'ISO-8859-1'); //replace with your encoding
     //$config->set('Core', 'Encoding', 'UTF-8'); // replace with your encoding
     $config->set('HTML', 'Doctype', 'HTML 4.01 Transitional'); // replace with your doctype
     $purifier = new HTMLPurifier($config);
-    
     return $purifier->purify($content);
 
 }
 
 ?>
+

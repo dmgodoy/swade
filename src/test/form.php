@@ -19,25 +19,35 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
-<meta http-equiv="Content-Type" content="text/html; charset='UTF-8'">
+
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
 
 </head>
 <body>
 <h1> Test de Content Parser </h1>
-<h2>CÃ³digo enviado:</h2>
+<h2>Código enviado:</h2>
 <br/>
 
 <textarea id="area1" cols="100" rows="10" readonly>
-<?php  echo $_POST['editor3']; ?>
+<?php 
+   //htmlentities(string,flags,character-set,double_encode)
+   $content = htmlentities($_POST['editor3'],0,'ISO-8859-1',TRUE);
+   /*Codificamos entidades para evitar problemas con parser*/
+   echo $content; 
+?>
 </textarea><br/>
-<h2>CÃ³digo parseado:</h2>
+<h2>Código parseado:</h2>
 <textarea id="area2" cols="100" rows="10" readonly>
-<?php include '../content_parser.php';  $parsed_content = parse_content($_POST['editor3']); echo $parsed_content ?>
+<?php include '../content_parser.php';  
+      $parsed_content = parse_content($content); 
+      echo $parsed_content; ?>
 </textarea><br/>
 
 <h2>Contenido parseado:</h2>
 <div id="content" style="border:1px solid black;width:800px;min-height:250px;">
-<?php  echo $parsed_content ?>
+<?php  echo html_entity_decode($parsed_content); 
+/*Decodificamos entidades para mostrarlas*/ 
+?>
 </div>
 <br/>
 </body>
