@@ -27,28 +27,49 @@
 <h1> Test de Content Parser </h1>
 <h2>Código enviado:</h2>
 <br/>
+<?php
+
+//We create the purifier
+
+require_once '../htmlpurifier/library/HTMLPurifier.auto.php';
+$config = HTMLPurifier_Config::createDefault();
+$config->set('Core.Encoding', 'ISO-8859-1'); // replace with your encoding
+$config->set('HTML.Doctype', 'HTML 4.01 Transitional'); // replace with your doctype
+$config->set('Core.EscapeNonASCIICharacters',true); 
+//ISO-8859-1 -> UTF-8 -> clean html -> UTF-8 -> EscapeNonASCII -> ISO-8859-1
+// if we don't add that option the purifier will mess our entities
+$purifier = new HTMLPurifier($config);
+
+
+//htmlentities(string,flags,character-set,double_encode)
+$parsed_content = htmlentities($purifier->purify($_POST['editor3']),0,'ISO-8859-1',TRUE); 
+$content = htmlentities($_POST['editor3'],0,'ISO-8859-1',TRUE); 
+
+?>
 
 <textarea id="area1" cols="100" rows="10" readonly>
 <?php 
-   //htmlentities(string,flags,character-set,double_encode)
-   $content = htmlentities($_POST['editor3'],0,'ISO-8859-1',TRUE);
-   /*Codificamos entidades para evitar problemas con parser*/
    echo $content; 
 ?>
-</textarea><br/>
+</textarea>
+<br/>
+
 <h2>Código parseado:</h2>
 <textarea id="area2" cols="100" rows="10" readonly>
-<?php include '../content_parser.php';  
-      $parsed_content = parse_content($content); 
-      echo $parsed_content; ?>
-</textarea><br/>
+<?php 
+      echo $parsed_content; 
+?>
+</textarea>
+<br/>
 
 <h2>Contenido parseado:</h2>
 <div id="content" style="border:1px solid black;width:800px;min-height:250px;">
-<?php  echo html_entity_decode($parsed_content); 
-/*Decodificamos entidades para mostrarlas*/ 
+<?php  
+echo html_entity_decode($parsed_content); 
+/*Decode the entities to show the symbols*/ 
 ?>
 </div>
 <br/>
+
 </body>
 </html>
